@@ -1,0 +1,22 @@
+loggin:
+    level:
+        org:
+            hibernate:
+                SQL: debug
+server:
+    port: 8084
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+#        password: Navila.676
+        password: napo123
+        platform: postgres
+        url: jdbc:postgresql://localhost:5432/mutantdnaDB
+#        url: jdbc:postgresql://databasemutant.cl9je2pfwzhy.us-east-2.rds.amazonaws.com:5432/mutantdnaDB
+        username: desarrollo
+#        username: postgres
+    jpa:
+        database: POSTGRESQL
+        hibernate:
+            ddl-auto: none
+        show-sql: false
