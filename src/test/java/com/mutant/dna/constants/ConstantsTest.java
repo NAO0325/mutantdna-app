@@ -24,7 +24,7 @@ class ConstantsTest {
      * Test of getPatternCharacters method, of class Constants.
      */
     @Test
-    public void testGetPatternCharacters() {
+    void testGetPatternCharacters() {
         System.out.println("testGetPatternCharacters");
         Assertions.assertNotNull(constants.getPatternCharacters());
         Assertions.assertEquals("(A|T|C|G)+", constants.getPatternCharacters());
@@ -34,7 +34,7 @@ class ConstantsTest {
      * Test of getMatchNumberDna method, of class Constants.
      */
     @Test
-    public void testGetMatchNumberDna() {
+    void testGetMatchNumberDna() {
         System.out.println("getMatchNumberDna");
         Assertions.assertNotNull(constants.getMatchNumberDna());
         Assertions.assertEquals(4, constants.getMatchNumberDna());
@@ -44,7 +44,7 @@ class ConstantsTest {
      * Test of getDnaIncomplete method, of class Constants.
      */
     @Test
-    public void testGetDnaVoid() {
+    void testGetDnaVoid() {
         System.out.println("getDnaVoid");
         Assertions.assertNotNull(constants.getDnaVoid());
         Assertions.assertEquals("    ,  ,  ,   ,    ,   ", constants.getDnaVoid());
@@ -54,7 +54,7 @@ class ConstantsTest {
      * Test of getDnaIncomplete method, of class Constants.
      */
     @Test
-    public void testGetDnaIncomplete() {
+    void testGetDnaIncomplete() {
         System.out.println("getDnaIncomplete");
         Assertions.assertNotNull(constants.getDnaIncomplete());
         Assertions.assertEquals("ATGCGA,CAGTC,TTATGT,AGAAGG,CCCCTA,TCACTG", constants.getDnaIncomplete());
@@ -64,7 +64,7 @@ class ConstantsTest {
      * Test of getDnaInvalid method, of class Constants.
      */
     @Test
-    public void testGetDnaInvalid() {
+    void testGetDnaInvalid() {
         System.out.println("getDnaInvalid");
         Assertions.assertNotNull(constants.getDnaInvalid());
         Assertions.assertEquals("ATGCGA,CAGTGC,TTNTGT,AGAAGG,CCCCTA,TCACTG", constants.getDnaInvalid());
@@ -74,7 +74,7 @@ class ConstantsTest {
      * Test of getDnaMutant method, of class Constants.
      */
     @Test
-    public void testGetDnaMutant() {
+    void testGetDnaMutant() {
         System.out.println("getDnaMutant");
         Assertions.assertNotNull(constants.getDnaMutant());
         Assertions.assertEquals("ATGCGA,CAGTGC,TTATGT,AGAAGG,CCCCTA,TCACTG", constants.getDnaMutant());
@@ -84,7 +84,7 @@ class ConstantsTest {
      * Test of getDnaHuman method, of class Constants.
      */
     @Test
-    public void testGetDnaHuman() {
+    void testGetDnaHuman() {
         System.out.println("getDnaHuman");
         Assertions.assertNotNull(constants.getDnaHuman());
         Assertions.assertEquals("ATGCGA,CAGTGC,TTATTT,AGACGG,GCGTCA,TCACTG", constants.getDnaHuman());
