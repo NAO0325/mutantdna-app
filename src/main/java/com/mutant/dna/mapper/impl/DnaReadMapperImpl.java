@@ -7,7 +7,6 @@ package com.mutant.dna.mapper.impl;
 
 import com.google.gson.Gson;
 import com.mutant.dna.dto.DnaReadDto;
-import com.mutant.dna.dto.StatusDto;
 import com.mutant.dna.mapper.DnaReadMapper;
 import com.mutant.dna.model.DnaRead;
 import java.util.Date;
@@ -21,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class DnaReadMapperImpl implements DnaReadMapper {
 
     @Override
-    public DnaRead DnaReadDtoToDnaRead(DnaReadDto dto) {
+    public DnaRead dnaReadDtoToDnaRead(DnaReadDto dto) {
         DnaRead obj = new DnaRead();
         obj.setDnaRead(new Gson().toJson(dto));
         obj.setDateRead(new Date());

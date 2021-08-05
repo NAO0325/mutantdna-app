@@ -8,15 +8,31 @@ server:
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
+#        password: mq6dck8u27s3cg5d
 #        password: Navila.676
         password: napo123
         platform: postgres
         url: jdbc:postgresql://localhost:5432/mutantdnaDB
+#        url: jdbc:postgresql://db-postgresql-nyc3-89704-do-user-9612392-0.b.db.ondigitalocean.com:25060/mutantdnaDB
 #        url: jdbc:postgresql://databasemutant.cl9je2pfwzhy.us-east-2.rds.amazonaws.com:5432/mutantdnaDB
         username: desarrollo
 #        username: postgres
+#        username: doadmin
     jpa:
         database: POSTGRESQL
         hibernate:
             ddl-auto: none
         show-sql: false
+#Constants
+match:
+    number:
+        dna: 4
+pattern:
+    characters: "(A|T|C|G)+"
+dna:
+    void: "    ,  ,  ,   ,    ,   "
+    incomplete: "ATGCGA,CAGTC,TTATGT,AGAAGG,CCCCTA,TCACTG"
+    invalid: "ATGCGA,CAGTGC,TTNTGT,AGAAGG,CCCCTA,TCACTG"
+    mutant: "ATGCGA,CAGTGC,TTATGT,AGAAGG,CCCCTA,TCACTG"
+    human: "ATGCGA,CAGTGC,TTATTT,AGACGG,GCGTCA,TCACTG"
+       

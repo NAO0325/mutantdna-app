@@ -5,13 +5,37 @@
  */
 package com.mutant.dna.constants;
 
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author npavila
  */
+@Getter
+@Component
 public class Constants {
 
-    public static final String PATTERN_CHARACTERS = "(A|T|C|G)+";
-    public static final int MATCH_NUMBER_DNA = 4;
+    @Value("${pattern.characters}")
+    private String patternCharacters;
+
+    @Value("${match.number.dna}")
+    private Integer matchNumberDna;
+
+    @Value("${dna.void}")
+    private String dnaVoid;
+
+    @Value("${dna.incomplete}")
+    private String dnaIncomplete;
+
+    @Value("${dna.invalid}")
+    private String dnaInvalid;
+
+    @Value("${dna.mutant}")
+    private String dnaMutant;
+
+    @Value("${dna.human}")
+    private String dnaHuman;
 
 }

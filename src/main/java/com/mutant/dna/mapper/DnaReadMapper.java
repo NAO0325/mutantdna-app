@@ -14,5 +14,5 @@ import com.mutant.dna.model.DnaRead;
  */
 public interface DnaReadMapper {
 
-    DnaRead DnaReadDtoToDnaRead(DnaReadDto dto);
+    DnaRead dnaReadDtoToDnaRead(DnaReadDto dto);
 }

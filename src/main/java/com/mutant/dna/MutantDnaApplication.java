@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MutantDnaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MutantDnaApplication.class, args);
+        SpringApplication.run(MutantDnaApplication.class);
     }
 
 }

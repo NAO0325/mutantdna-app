@@ -9,21 +9,23 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import lombok.AllArgsConstructor;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 /**
  *
  * @author npavila
  */
+@Validated
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dnaReadDto")
 public class DnaReadDto {
 
+    @NotNull
     private List<String> dna;
 
 }
