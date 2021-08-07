@@ -113,7 +113,7 @@
                 <configuration>
                     <excludes>
                         <exclude>com/mutant/dna/**/DnaRead.class</exclude>
-                        <exclude>com/mutant/dna/**/*Handler.*</exclude>
+                        <exclude>com/mutant/dna/api/**/*Handler.*</exclude>
                         <exclude>com/mutant/dna/**/*Dto.*</exclude>
                         <exclude>**/config/*</exclude>
                     </excludes>
