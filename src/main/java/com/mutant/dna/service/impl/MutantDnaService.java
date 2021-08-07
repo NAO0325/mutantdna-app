@@ -8,7 +8,6 @@ package com.mutant.dna.service.impl;
 import com.mutant.dna.constants.Constants;
 import com.mutant.dna.dto.DnaReadDto;
 import com.mutant.dna.dto.StatusDto;
-import com.mutant.dna.exception.GeneralException;
 import com.mutant.dna.mapper.DnaReadMapper;
 import com.mutant.dna.model.DnaRead;
 import com.mutant.dna.repository.DnaReadRepo;
@@ -47,66 +46,58 @@ public class MutantDnaService implements MutantDnaInterface {
     @Override
     public boolean isMutant(DnaReadDto dto, StringBuilder warn) throws Exception {
 
-        try {
-            //Validando datos de entrada
-            if (!validateArray(dto, warn)) {
-                return false;
-            }
-
-            String[][] matrixDna = arrayToMatrix(dto.getDna());
-            List<String> lstChains = new ArrayList<>();
-
-            readVerHor(matrixDna, lstChains, false);
-            readVerHor(matrixDna, lstChains, true);
-            readDiagonal(matrixDna, lstChains);
-            readDiagonalInverse(matrixDna, lstChains);
-
-            adjustValues(dto.getDna());
-
-            //Registrando lectura de ADN
-            DnaRead dnaRead = mapper.dnaReadDtoToDnaRead(dto);
-            boolean isMutant = evalChains(lstChains);
-            dnaRead.setMutant(isMutant);
-            repo.save(dnaRead);
-
-            return isMutant;
-        } catch (Exception ex) {
-            throw GeneralException.throwException(this, ex);
+        //Validando datos de entrada
+        if (!validateArray(dto, warn)) {
+            return false;
         }
+
+        String[][] matrixDna = arrayToMatrix(dto.getDna());
+        List<String> lstChains = new ArrayList<>();
+
+        readVerHor(matrixDna, lstChains, false);
+        readVerHor(matrixDna, lstChains, true);
+        readDiagonal(matrixDna, lstChains);
+        readDiagonalInverse(matrixDna, lstChains);
+
+        adjustValues(dto.getDna());
+
+        //Registrando lectura de ADN
+        DnaRead dnaRead = mapper.dnaReadDtoToDnaRead(dto);
+        boolean isMutant = evalChains(lstChains);
+        dnaRead.setMutant(isMutant);
+        repo.save(dnaRead);
+
+        return isMutant;
     }
 
     @Override
     public StatusDto getStats() throws Exception {
-        try {
-            StatusDto dto = new StatusDto();
-            List<DnaRead> allDnaRead = repo.findAll();
+        StatusDto dto = new StatusDto();
+        List<DnaRead> allDnaRead = repo.findAll();
 
-            long totalMutant = 0;
-            long totalHuman = 0;
-            for (DnaRead dnaRead : allDnaRead) {
-                if (dnaRead.isMutant()) {
-                    totalMutant++;
-                } else {
-                    totalHuman++;
-                }
-            }
-
-            if (totalMutant > 0L && totalHuman == 0L) {
-                dto.setRatio(1.0);
-            } else if (totalMutant == 0L) {
-                dto.setRatio(0.0);
+        long totalMutant = 0;
+        long totalHuman = 0;
+        for (DnaRead dnaRead : allDnaRead) {
+            if (dnaRead.isMutant()) {
+                totalMutant++;
             } else {
-                double r = (double) totalMutant / (double) (totalHuman + totalMutant);
-                dto.setRatio(Precision.round(r, 2));
+                totalHuman++;
             }
-
-            dto.setCountMutantDna(totalMutant);
-            dto.setCountHumanDna(totalHuman);
-
-            return dto;
-        } catch (Exception ex) {
-            throw GeneralException.throwException(this, ex);
         }
+
+        if (totalMutant > 0L && totalHuman == 0L) {
+            dto.setRatio(1.0);
+        } else if (totalMutant == 0L) {
+            dto.setRatio(0.0);
+        } else {
+            double r = (double) totalMutant / (double) (totalHuman + totalMutant);
+            dto.setRatio(Precision.round(r, 2));
+        }
+
+        dto.setCountMutantDna(totalMutant);
+        dto.setCountHumanDna(totalHuman);
+
+        return dto;
     }
 
     private boolean validateArray(DnaReadDto dto, StringBuilder warn) {
