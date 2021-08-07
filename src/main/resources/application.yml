@@ -5,6 +5,11 @@ loggin:
                 SQL: debug
 server:
     port: 8090
+    tomcat:
+        connections:
+            max: 100000
+        threads:
+            max: 400
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
@@ -19,10 +24,17 @@ spring:
 #        username: postgres
         username: doadmin
     jpa:
+        open-in-view: false
         database: POSTGRESQL
         hibernate:
             ddl-auto: none
         show-sql: false
+#actuator
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
 #Constants
 match:
     number:

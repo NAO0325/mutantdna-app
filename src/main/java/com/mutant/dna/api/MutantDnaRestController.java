@@ -34,7 +34,8 @@ public class MutantDnaRestController {
     }
 
     @PostMapping(value = "/mutant")
-    public ResponseEntity<MessajeOutDto> mutant(@Valid @RequestBody DnaReadDto dto) {
+    public ResponseEntity<MessajeOutDto> mutant(@Valid @RequestBody DnaReadDto dto)
+            throws Exception {
         StringBuilder warn = new StringBuilder();
         boolean isMutant = service.isMutant(dto, warn);
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -51,7 +52,7 @@ public class MutantDnaRestController {
     }
 
     @GetMapping(value = "/stats")
-    public ResponseEntity<StatusDto> stats() {
+    public ResponseEntity<StatusDto> stats() throws Exception  {
         HttpHeaders responseHeaders = new HttpHeaders();
         return new ResponseEntity<>(service.getStats(),
                 responseHeaders, HttpStatus.OK);

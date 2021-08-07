@@ -20,13 +20,15 @@ public interface MutantDnaInterface {
      * @param dto con arreglo de dna
      * @param warn valor de valicaciones inicializado vacío
      * @return boolean true if mutant
+     * @throws Exception
      */
-    boolean isMutant(DnaReadDto dto, StringBuilder warn);
+    boolean isMutant(DnaReadDto dto, StringBuilder warn) throws Exception;
     
     /**
      * Determina estadísticas de las muestras de ADN tomadas
      *
      * @return StatusDto objeto con información estadística
+     * @throws Exception
      */
-    StatusDto getStats();
+    StatusDto getStats() throws Exception;
 }

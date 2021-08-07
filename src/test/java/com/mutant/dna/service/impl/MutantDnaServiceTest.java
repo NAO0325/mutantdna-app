@@ -7,13 +7,12 @@ package com.mutant.dna.service.impl;
 
 import com.mutant.dna.constants.Constants;
 import com.mutant.dna.dto.DnaReadDto;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 /**
  *
  * @author npavila
@@ -27,19 +26,19 @@ class MutantDnaServiceTest {
     @Autowired
     MutantDnaService service;
 
-    private DnaReadDto dnaReadDto = new DnaReadDto();
+    private final DnaReadDto dnaReadDto = new DnaReadDto();
 
     /**
      * Test of isMutant method, of class MutantDnaService.
      */
     @Test
-    void testIsMutant() {
+    void testIsMutant() throws Exception {
         System.out.println("testIsMutant");
         whenDnaChainIsMutant();
     }
 
     @Test
-    void testIsNotMutant() {
+    void testIsNotMutant() throws Exception {
         System.out.println("testIsNotMutant");
         whenDtoIsNotNullAndWarnIsNull();
         whenDtoIsNullAndWarnNotNull();
@@ -57,62 +56,60 @@ class MutantDnaServiceTest {
      * Test of getStats method, of class MutantDnaService.
      */
     @Test
-    void testGetStats() {
+    void testGetStats() throws Exception {
         System.out.println("testGetStats");
         Assertions.assertNotNull(service.getStats());
     }
 
-    private void whenDtoIsNullAndWarnNotNull(){
+    private void whenDtoIsNullAndWarnNotNull() throws Exception {
         Assertions.assertFalse(service.isMutant(null, new StringBuilder()));
     }
 
-    private void whenDtoIsNotNullAndWarnIsNull(){
+    private void whenDtoIsNotNullAndWarnIsNull() throws Exception {
         Assertions.assertFalse(service.isMutant(dnaReadDto, null));
     }
 
-    private void whenDtoIsNullAndWarnIsNull(){
+    private void whenDtoIsNullAndWarnIsNull() throws Exception {
         Assertions.assertFalse(service.isMutant(null, null));
     }
 
-    private void whenDtoInstanceIsEmpty(){
+    private void whenDtoInstanceIsEmpty() throws Exception {
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsEmpty(){
-        dnaReadDto.setDna(new ArrayList<>());
+    private void whenDnaChainIsEmpty() throws Exception {
+        dnaReadDto.setDna(new String[0]);
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsNull(){
+    private void whenDnaChainIsNull() throws Exception {
         dnaReadDto.setDna(null);
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsVoid(){
-        dnaReadDto.setDna(Arrays.asList(constants.getDnaVoid().split(",")));
+    private void whenDnaChainIsVoid() throws Exception {
+        dnaReadDto.setDna(constants.getDnaVoid().split(","));
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsIncomplete(){
-        dnaReadDto.setDna(Arrays.asList(constants.getDnaIncomplete().split(",")));
+    private void whenDnaChainIsIncomplete() throws Exception {
+        dnaReadDto.setDna(constants.getDnaIncomplete().split(","));
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsInvalid(){
-        dnaReadDto.setDna(Arrays.asList(constants.getDnaInvalid().split(",")));
+    private void whenDnaChainIsInvalid() throws Exception {
+        dnaReadDto.setDna(constants.getDnaInvalid().split(","));
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsHuman(){
-        dnaReadDto.setDna(Arrays.asList(constants.getDnaHuman().split(",")));
+    private void whenDnaChainIsHuman() throws Exception {
+        dnaReadDto.setDna(constants.getDnaHuman().split(","));
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
 
-    private void whenDnaChainIsMutant(){
-        dnaReadDto.setDna(Arrays.asList(constants.getDnaHuman().split(",")));
+    private void whenDnaChainIsMutant() throws Exception {
+        dnaReadDto.setDna(constants.getDnaHuman().split(","));
         Assertions.assertFalse(service.isMutant(dnaReadDto, new StringBuilder()));
     }
-
-
 
 }

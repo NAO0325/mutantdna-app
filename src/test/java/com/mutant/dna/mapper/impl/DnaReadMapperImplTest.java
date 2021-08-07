@@ -7,7 +7,6 @@ package com.mutant.dna.mapper.impl;
 
 import com.mutant.dna.constants.Constants;
 import com.mutant.dna.dto.DnaReadDto;
-import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ class DnaReadMapperImplTest {
     void testDnaReadDtoToDnaRead() {
         System.out.println("dnaReadDtoToDnaRead");
         DnaReadDto dto = new DnaReadDto();
-        dto.setDna(Arrays.asList(constants.getDnaMutant().split(",")));
+        dto.setDna(constants.getDnaMutant().split(","));
         Assertions.assertNotNull(mapper.dnaReadDtoToDnaRead(dto));
     }
     

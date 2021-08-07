@@ -26,6 +26,6 @@ import org.springframework.validation.annotation.Validated;
 public class DnaReadDto {
 
     @NotNull
-    private List<String> dna;
+    private String[] dna;
 
 }
