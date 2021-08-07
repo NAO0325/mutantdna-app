@@ -92,7 +92,7 @@ public class MutantDnaService implements MutantDnaInterface {
         } else {
             double r = 0;
             if (totalHuman != 0) {
-                r = (double) totalMutant / (double) totalHuman;
+                r = (double) totalMutant / (double) (totalHuman + totalMutant);
             }
             dto.setRatio(Precision.round(r, 2));
         }
