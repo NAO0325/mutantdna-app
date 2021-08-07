@@ -21,7 +21,6 @@ public class GlobalErrorHandler {
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public String methodArgumentNotValidException(Exception ex) {
-        log.error("Ha ocurrido un error inesperado", ex);
         return "Ha ocurrido un error interno, por favor intente más tarde";
     }
 
