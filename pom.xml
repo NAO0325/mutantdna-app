@@ -113,6 +113,8 @@
                 <configuration>
                     <excludes>
                         <exclude>com/mutant/dna/**/DnaRead.class</exclude>
+                         <exclude>com/mutant/dna/**/*ETipoError.*</exclude>
+                        <exclude>com/mutant/dna/**/*Exception.*</exclude>
                         <exclude>com/mutant/dna/**/*Dto.*</exclude>
                         <exclude>**/config/*</exclude>
                     </excludes>
